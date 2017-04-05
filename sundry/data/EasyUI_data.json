@@ -1,0 +1,15 @@
+[
+    {"num":1,"name":"张三","pid":"5201031994xxxxxx","class":"3班","teacher":{"tc1":"张老师","tc2":"王老师"},"com_level":"B","add":"重庆市xx市xx街xx号"},
+    {"num":2,"name":"李四","pid":"5201031344xxxxxx","class":"4班","teacher":{"tc1":"李老师","tc2":"王老师"},"com_level":"B","add":"重庆市xx市xx街xx号"},
+    {"num":3,"name":"a's'd","pid":"5341031994xxxxxx","class":"2班","teacher":{"tc1":"maixm老师","tc2":"王老师"},"com_level":"B","add":"重庆市xx市xx街xx号"},
+    {"num":4,"name":"asdmaxim","pid":"4201031994xxxxxx","class":"x班","teacher":{"tc1":"张老师","tc2":"周老师"},"com_level":"B","add":"重庆市xx市xx街xx号"},
+    {"num":5,"name":"缪比","pid":"5201031994xxxxxx","class":"36班","teacher":{"tc1":"张老师","tc2":"王老师"},"com_level":"A","add":"重庆市xx市xx街xx号"},
+    {"num":6,"name":"周帅","pid":"5201031994xxxxxx","class":"5班","teacher":{"tc1":"马老师","tc2":"王老师"},"com_level":"F","add":"重庆市xx市xx街xx号"},
+    {"num":7,"name":"陈强","pid":"5201031994xxxxxx","class":"7班","teacher":{"tc1":"张老师","tc2":"徐老师"},"com_level":"B","add":"重庆市xx市xx街xx号"},
+    {"num":8,"name":"鬼付","pid":"5201031994xxxxxx","class":"0班","teacher":{"tc1":"欧阳老师","tc2":"王老师"},"com_level":"S","add":"重庆市xx市xx街xx号"},
+    {"num":9,"name":"骚猴","pid":"5201431994xxxxxx","class":"4班","teacher":{"tc1":"张老师","tc2":"劫老师"},"com_level":"SA","add":"重庆市xx市xx街xx号"},
+    {"num":10,"name":"草若飞","pid":"5201453194xxxxxx","class":"2班","teacher":{"tc1":"张老师","tc2":"王老师"},"com_level":"C","add":"重庆市xx市xx街xx号"},
+    {"num":11,"name":"张三","pid":"5201031994xxxxxx","class":"5班","teacher":{"tc1":"苦老师","tc2":"王老师"},"com_level":"B","add":"重庆市xx市xx街xx号"},
+    {"num":12,"name":"张三","pid":"5456031994xxxxxx","class":"5班","teacher":{"tc1":"杀老师","tc2":"王老师"},"com_level":"B","add":"重庆市xx市xx街xx号"},
+    {"num":13,"name":"张三","pid":"5201031994xxxxxx","class":"3班","teacher":{"tc1":"张老师","tc2":"杀老师"},"com_level":"B","add":"重庆市xx市xx街xx号"}
+]

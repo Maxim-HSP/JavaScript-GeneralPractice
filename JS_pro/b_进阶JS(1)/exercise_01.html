@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>Untitled Document</title>
+	<meta name="Author" content=""/>
+	<script>
+        function test01(){
+            var GotInput=document.getElementsByTagName('input');
+            console.log(GotInput);
+            for(var i=0;i<GotInput.length;i++){
+                GotInput[i].value=12346+'+'+i;
+            }
+            var GotBtn=document.getElementById('btn');
+            GotBtn.innerHTML='赋值完成';
+        }
+    </script>
+</head>
+<body>
+   <p><b>文本框</b></p>
+    <input id="text_1" type="text">
+    <input id="text_2" type="text">
+    <input id="text_3" type="text">
+    <input id="text_4" type="text">
+    <input id="text_5" type="text">
+    <input id="text_6" type="text">
+    <input id="text_7" type="text">
+    <input id="text_8" type="text">
+    <input id="text_9" type="text">
+    <input id="text_10" type="text">
+    <hr><p><b>密码框</b></p>
+    <input id="pwd_1" type="password">
+    <input id="pwd_2" type="password">
+    <input id="pwd_3" type="password">
+    <input id="pwd_4" type="password">
+    <input id="pwd_5" type="password">
+    <input id="pwd_6" type="password">
+    <input id="pwd_7" type="password">
+    <input id="pwd_8" type="password">
+    <input id="pwd_9" type="password">
+    <input id="pwd_10" type="password">
+    <hr>
+    <button id="btn" onclick="test01()">将所有输入框赋值123456</button>
+</body>
+</html>

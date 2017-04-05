@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>Form和正则表达式</title>
+	<meta name="Author" content=""/>
+    <script type="text/javascript" src="form.js"></script>
+</head>
+<body>
+    <form id="form1_t1" action="/submit_form01">
+        <input id="input1_t1" type="text">
+        <input id="input2_t1" type="text">
+        <input type="text" onfocus="this.select()" value="使用内联onfocus事件，实现自动选择文本">
+        <p onclick="test01()">点击这个字段提交</p>
+    </form>
+    <select name="slt1_t2" id="slt1_t2" multiple size="5">
+        <option value="">option1</option>
+        <option value="">option2</option>
+        <option value="">option3</option>
+        <option value="">option4</option>
+        <option value="">option5</option>
+        <option value="">option6</option>
+        <option value="">option7</option>
+    </select>
+    <button onclick="test02()">转移></button>
+    <select name="slt2_t2" id="slt2_t2" multiple size="5"></select><br/>
+    <form action="">
+        <label for="male">男</label><input id="male" name="sex" type="radio" checked>
+        <label for="female">女</label><input id="female" name="sex" type="radio">
+        <input onclick="test03()" type="button" value="获取单选按钮的信息">
+        <input type="button" onclick="test03_2()" value="模拟点击第二项“女”"><br/>
+        <br/>
+        <label for="ckb_t4_all"><input id="ckb_t4_all" type="checkbox" onclick="selectAll(this.checked)">全选</label>
+        <br/>
+        <label for="ckb_t4"><input name="ckb_t4" type="checkbox">项目1</label>
+        <label for="ckb_t4"><input name="ckb_t4" type="checkbox">项目2</label>
+        <label for="ckb_t4"><input name="ckb_t4" type="checkbox">项目3</label>
+        <label for="ckb_t4"><input name="ckb_t4" type="checkbox">项目4</label>
+        <label for="ckb_t4"><input name="ckb_t4" type="checkbox">项目5</label>
+    </form>
+</body>
+</html>

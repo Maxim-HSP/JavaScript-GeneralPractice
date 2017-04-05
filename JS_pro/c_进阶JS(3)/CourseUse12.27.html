@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>Video/Audio对象,元素拖放等</title>
+	<meta name="Author" content=""/>
+	<script>
+        var MyVideo;
+        function test01(){
+            MyVideo=document.getElementById('video_t1')
+            if(MyVideo.paused){ //.paused检测视频是否被暂停
+                MyVideo.play();
+            }
+            else{
+                MyVideo.pause();
+            }
+        }
+        function test02(){
+            MyVideo.load();
+        }
+        //--------
+        function dragstart(){
+            event.dataTransfer.setData("divID",event.target.id);
+            //将准备拖放的元素设置为一个可以传递的参数到event（通过id设置）
+        }
+        function dragover(){
+            event.preventDefault();
+            //使浏览器阻止拖动目标容器(区域)的默认动作，使容器可以放入拖动的元素
+        }
+        function drop(){
+            var item=document.getElementById(event.dataTransfer.getData("divID"));
+            //获取上面传递的参数(即获取的元素id)，并将获取到的元素放入目标容器
+            event.target.appendChild(item);
+        }
+        //--------
+        var accout;
+        var pwd;
+        window.onload=function(){
+            accout=document.getElementById('accout');
+            pwd=document.getElementById('pwd');
+            if(document.cookie!==''){
+                console.log(document.cookie);
+                var APCookie=document.cookie.split(",");
+                accout.value=APCookie[0];
+                pwd.value=APCookie[1];
+            }
+            if(localStorage.length>0){
+                console.log('localStorage已有内容:');
+                console.log(localStorage);
+                document.getElementById('accout_l').value=localStorage.account;
+                document.getElementById('pwd_l').value=localStorage.pwd;
+                document.getElementById('mail_l').value=localStorage.email;
+                document.getElementById('tel_l').value=localStorage.tel;
+                document.getElementById('login_time').innerHTML=localStorage.loginTime;
+            }
+        }
+        //cookie使用
+        function test05(){
+            document.cookie=accout.value+','+pwd.value;
+        }
+        //localStorage使用
+        function test06(){
+            localStorage.account=document.getElementById('accout_l').value;
+            localStorage.pwd=document.getElementById('pwd_l').value;
+            localStorage.email=document.getElementById('mail_l').value;
+            localStorage.tel=document.getElementById('tel_l').value;
+            localStorage.loginTime='上次登录时间为：'+Date();
+        }
+        sessionStorage
+    </script>
+</head>
+<body>
+    <video id="video_t1" src="media/%E5%AE%8C%E7%BB%93%E7%AF%87.Kiseiju_1.mp4" controls></video><br/>
+    <button onclick="test01()">播放/暂停</button>
+    <button onclick="test02()">重载</button>
+    <button onclick="test03()">快进</button>
+    <hr>
+    <h4>元素拖放</h4>
+    <div id="div1_t4" draggable="true" ondragstart="dragstart()" >这是一个可以拖动到下面蓝色区域的DIV</div>
+    <div id="div2_t4" ondragover="dragover()" ondrop="drop()"></div>
+    <style>
+        #div1_t4{
+            width: 200px;
+            height: 200px;
+            text-align: center;
+            background: #444749;
+            color: wheat;
+        }
+        #div2_t4{
+            width: 300px;
+            height: 300px;
+            text-align: center;
+            background: #29ABE2;
+        }
+    </style>
+    <hr>
+    <h4>cookie使用/localStorages使用/sessionStorage使用</h4>
+    <label for="accout"><input id="accout" type="text">账户</label>
+    <br/>
+    <br/>
+    <label for="pwd"><input id="pwd" type="password">密码</label><br/>
+    <button onclick="test05()">记录cookie,重载后自动填充内容</button>
+    <br/>
+    <br/>
+    <label for="accout_l">用户名<input id="accout_l" type="text"></label>
+    <label for="pwd_l">密码<input id="pwd_l" type="password"></label>
+    <label for="mail_l">email<input id="mail_l" type="text"></label>
+    <label for="tel_l">电话<input id="tel_l" type="text"></label>
+    <p id="login_time"></p>
+    <br>
+    <button onclick="test06()">localStorage存储以上信息，重载时自动填充内容</button>
+</body>
+</html>

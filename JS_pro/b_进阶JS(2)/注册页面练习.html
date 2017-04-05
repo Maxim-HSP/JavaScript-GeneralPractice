@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>注册页面练习</title>
+	<meta name="Author" content=""/>
+	<style>
+        p{
+            display: inline-block;
+            width: 300px;
+            text-align: right;
+            padding-right: 10px;
+        }
+        .wrongText{
+            color: red;
+        }
+        .passText{
+            color: green;
+        }
+    </style>
+	<script>
+        var formArr=[false,false,false,false,false];
+        window.onload=function(){
+            var accIn=document.getElementById('acc');
+            var pwdIn=document.getElementById('pwd');
+            var pwdCfmIn=document.getElementById('pwdCfm');
+            var phoneNumIn=document.getElementById('phoneNum');
+            
+            var AccWn=document.getElementById('AccWn');
+            var PwdWn=document.getElementById('PwdWn');
+            var PcWn=document.getElementById('PcWn');
+            var PnWn=document.getElementById('PnWn');
+        }
+        function checkAcc(GotAcc){
+            //正则表达式判断字母数字下划线
+            var AccReg=/^[0-9a-zA-Z_]+$/;
+            if(AccReg.test(GotAcc)){
+                console.log('账户正则通过');
+                AccWn.innerHTML='√';
+                AccWn.className='passText';
+                formArr[0]=true;
+            }else{
+                console.log('账户正则不通过');
+                AccWn.innerHTML='× 用户ID错误,只能使用字母数字下划线';
+                AccWn.className='wrongText';
+            }
+        }
+        function checkPwd(GotPwd){
+            var PwdReg=/^[0-9a-zA-Z]+$/;
+            if(PwdReg.test(GotPwd)){
+                console.log('密码正则通过');
+                PwdWn.innerHTML='√';
+                PwdWn.className='passText';
+                formArr[1]=true;
+            }else{
+                console.log('密码正则不通过');
+                PwdWn.innerHTML='× 密码格式错误,只能使用字母数字';
+                PwdWn.className='wrongText';
+            }
+        }
+        function checkPwdConfirm(GotPc){
+            var PwdReg=/^[0-9a-zA-Z]+$/;
+            if(GotPc==document.getElementById('pwd').value && PwdReg.test(GotPc)){
+                console.log('密码确认通过');
+                PcWn.innerHTML='√';
+                PcWn.className='passText';
+                formArr[2]=true;
+            }else{
+                console.log('密码确认不通过');
+                PcWn.innerHTML='× 与已经输入的密码不一致，请重新输入';
+                PcWn.className='wrongText';
+            }
+        }
+        function checkPhNum(GotNum){
+            //正则判断11位数字
+            var phNumReg=/^\d{1,11}$/;
+            if(phNumReg.test(GotNum) && GotNum.length==11){
+                console.log('手机号正则通过');
+                PnWn.innerHTML='√';
+                PnWn.className='passText';
+                formArr[3]=true;
+            }else{
+                console.log('手机号正则不通过');
+                PnWn.innerHTML='× 手机号错误，请输入11位数字';
+                PnWn.className='wrongText';
+            }
+        }
+        function checkMailBox(GotMB){
+            var MailBoxReg=/^\w+@\w+[\.]{1}\w{2,3}$/;
+            if(MailBoxReg.test(GotMB)){
+                console.log('邮箱正则通过');
+                mailBoxWn.innerHTML='√';
+                mailBoxWn.className='passText';
+                formArr[4]=true;
+            }else{
+                console.log('邮箱正则不通过');
+                mailBoxWn.innerHTML='× 邮箱格式错误';
+                mailBoxWn.className='wrongText';
+            }
+        }
+        function checkForm(){
+            for(var i=0;i<formArr.length;i++){
+                if(formArr[i]==false){
+                    return false;
+                }
+            } 
+            console.log(formArr);
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h4>使用正则表达式等</h4>
+    <div>
+        <form action="/post_test" onsubmit="return checkForm()">
+            <p><label for="acc">用户名 </label><input id="acc" type="text" onchange="checkAcc(this.value)"></p><span id="AccWn"></span><br/>
+            
+            <p><label for="pwd">密码 </label><input id="pwd" type="text" onchange="checkPwd(this.value)"></p><span id="PwdWn"></span><br/>
+            
+            <p><label for="pwdCfm">确认密码 </label><input id="pwdCfm" type="text" onchange="checkPwdConfirm(this.value)"></p><span id="PcWn"></span><br/>
+            
+            <p><label for="phoneNum">手机号 </label><input id="phoneNum" type="text" onchange="checkPhNum(this.value)" maxlength="11"></p><span id="PnWn"></span><br/>
+            
+            <p><label for="phoneNum">邮箱 </label><input id="mailBox" type="text" onchange="checkMailBox(this.value)"></p><span id="mailBoxWn"></span><br/>
+            
+            <button>提交注册</button>
+        </form>
+    </div>
+    
+</body>
+</html>

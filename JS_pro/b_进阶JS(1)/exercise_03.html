@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>12.22作业</title>
+	<meta name="Author" content=""/>
+	<style>
+        
+    </style>
+	<script>
+        //表单绑定onsubmit事件(使用标签中绑定事件)，如果输入值不对则阻止提交
+        function checkSubmit(){
+            if(document.getElementById('account').value!=='f35' || document.getElementById('pwd').value!=='f35pwd'){
+                return false;
+            }
+            return true;
+        }
+        window.onload=function(){
+            //账户输入框绑定onfocus事件(使用JS绑定方式)，提示输入内容
+            document.getElementById('account').onfocus=function(){
+                document.getElementById('acc-warning').innerHTML='请输入f35，输入其他字符将无法提交表单';
+                document.getElementById('acc-warning').style.color='skyblue';
+            }
+            //账户输入框绑定onchange事件(使用JS绑定方式)，检测输入内容
+            document.getElementById('account').onchange=function(){
+                if(document.getElementById('account').value!=='f35'){
+                    document.getElementById('acc-warning').innerHTML='× 输入错误';
+                    document.getElementById('acc-warning').style.color='red';
+                    document.getElementById('account').style.border='1px solid red';
+                }else{
+                    document.getElementById('acc-warning').innerHTML='';
+                    document.getElementById('account').style.border='1px solid #C3E872';
+                } 
+            }
+            //密码输入框绑定onchange事件(使用JS绑定方式)，检测输入内容
+            document.getElementById('pwd').onchange=function(){
+                if(document.getElementById('pwd').value!=='f35pwd'){
+                    document.getElementById('pwd-warning').innerHTML='× 输入错误，只能使用f35pwd';
+                    document.getElementById('pwd-warning').style.color='red';
+                    document.getElementById('pwd').style.border='1px solid red';
+                }else{
+                    document.getElementById('pwd-warning').innerHTML='';
+                    document.getElementById('pwd').style.border='1px solid #C3E872';
+                } 
+            }
+            //第二题，创建label并添加点击事件
+            for(var i=0;i<10;i++){
+                var NewLab=document.createElement('label');
+                NewLab.innerHTML='这是第'+(i+1)+'个Label';
+                NewLab.style='display:block;width:300px;border:1px solid #EEEEEE';
+                NewLab.onclick=function(){
+                    alert('你点击了Label');
+                }
+                //document.getElementsByTagName('body')[0].appendChild(NewLab);
+                document.getElementById('div_t2').appendChild(NewLab);
+            }
+            //第三题，打印事件流传播顺序
+            var btn_t3a=document.getElementById('btn_t3a');
+            var btn_t3b=document.getElementById('btn_t3b');
+            var div_t3=document.getElementById('div_t3');
+            var body=document.getElementsByTagName('body')[0];
+                //切换按钮b
+            btn_t3b.onclick=function(){
+                //将监听组件的事件流设为捕获型
+                div_t3.addEventListener("click",div_t3_click,true);
+                body.addEventListener("click",body_click,true);
+                document.addEventListener("click",DOM_click,true);
+            }
+                //显示按钮a
+            btn_t3a.onclick= btn_t3a_click;
+            div_t3.onclick=div_t3_click;
+            body.onclick=body_click;
+            document.onclick=DOM_click;
+             
+                
+            function btn_t3a_click(){
+                var spanA=document.createElement('span')
+                spanA.innerHTML='a按钮触发了点击事件 > ';
+                div_t3.appendChild(spanA);
+            }
+            function btn_t3b_click(){
+                var spanB=document.createElement('span')
+                spanB.innerHTML='b按钮触发了点击事件 > ';
+                div_t3.appendChild(spanB);
+            }
+            function div_t3_click(){
+                var spanDiv=document.createElement('span')
+                spanDiv.innerHTML='div_t3触发了点击事件 > ';
+                div_t3.appendChild(spanDiv);
+            }
+            function body_click(){
+                var spanBody=document.createElement('span')
+                spanBody.innerHTML='body触发了点击事件 > ';
+                div_t3.appendChild(spanBody);
+            }
+            function DOM_click(){
+                var spanD=document.createElement('span')
+                spanD.innerHTML='DOM触发了点击事件 > ';
+                div_t3.appendChild(spanD);
+            }
+            
+        }
+        function EventOn(btn){
+            if(document.getElementById('div_t3').style.display!=='block'){
+                document.getElementById('div_t3').style.display='block';
+                btn.innerHTML=btn.innerHTML.replace('开启','关闭');
+            }else{
+                document.getElementById('div_t3').style.display='none';
+                btn.innerHTML=btn.innerHTML.replace('关闭','开启');
+            }
+        }
+    </script>
+</head>
+<body>
+    <h4>1.登录注册表单</h4>
+    <pre>
+        新建一个页面，要求有用户名和密码，登陆和注册按钮
+        用户名如果不为f35则错误，密码不为f35pwd则错误，如果错误，在对应文本框后面提示红色错误信息，否则绿色
+        当2个框判断都ok时，登陆顺利提交表单，否则，点击阻止表单提交。
+    </pre>
+    <form action="/testURL" method="post" onsubmit="return checkSubmit()">
+        <label for="account">账户</label>
+        <input id="account" type="text"> <span id="acc-warning"></span>
+        <p></p>
+        <label for="pwd">密码</label>
+        <input id="pwd" type="password"> <span id="pwd-warning"></span>
+        <p></p>
+        <input type="submit" value="登录">   
+    </form>
+    <hr>
+    <h4>2.在onload里面创建10个不同的label，都添加上点击事件，点击alert一句话，最后放在下面的div中</h4>
+    <div id=div_t2></div>
+    <hr>
+    <button onclick="EventOn(this)">开启显示事件流功能</button>
+    <div id="div_t3" style="display:none">
+        <button id="btn_t3a">a按钮显示事件流</button>
+        <button id="btn_t3b">b按钮切换事件流类型（捕获/冒泡）</button>
+        <br/>
+    </div>
+</body>
+</html>

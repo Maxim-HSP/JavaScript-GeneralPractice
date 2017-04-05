@@ -1,0 +1,22 @@
+{
+    "content":[
+        {"num":"学号1","name":"学生姓名a","sex":0,"school":"电子科大","class":"1班","add":"地址zxc"},
+        {"num":"学号2","name":"学生姓名asd","sex":0,"school":"电子科大","class":"1班","add":"地址zxc"},
+        {"num":"学号3","name":"学生姓名df","sex":0,"school":"电子科大","class":"1班","add":"地址zcs"},
+        {"num":"学号4","name":"学生姓名fg","sex":0,"school":"电子科大","class":"1班","add":"地址"},
+        {"num":"学号5","name":"学生姓名gj","sex":0,"school":"电子科大","class":"1班","add":"地址"},
+        {"num":"学号6","name":"学生姓名xv","sex":0,"school":"电子科大","class":"1班","add":"地址"},
+        {"num":"学号7","name":"学生姓名xcv","sex":0,"school":"电子科大","class":"1班","add":"地址dv"},
+        {"num":"学号8","name":"学生姓名df","sex":0,"school":"电子科大","class":"1班","add":"地址"},
+        {"num":"学号9","name":"学生姓名rg","sex":0,"school":"电子科大","class":"1班","add":"地址"},
+        {"num":"学号10","name":"学生姓名cb","sex":0,"school":"电子科大","class":"1班","add":"地址"},
+        {"num":"学号11","name":"学生姓名nb","sex":0,"school":"电子科大","class":"1班","add":"地址db"},
+        {"num":"学号12","name":"学生姓名yj","sex":0,"school":"电子科大","class":"1班","add":"地址"},
+        {"num":"学号13","name":"学生姓名mhm","sex":0,"school":"电子科大","class":"1班","add":"地址b z"},
+        {"num":"学号14","name":"学生姓名gmn","sex":0,"school":"电子科大","class":"1班","add":"地址zcs"},
+        {"num":"学号","name":"学生姓名gn","sex":0,"school":"电子科大","class":"1班","add":"地址"},
+        {"num":"学号","name":"学生姓名","sex":0,"school":"电子科大","class":"1班","add":"地址"},
+        {"num":"学号","name":"学生姓名","sex":0,"school":"电子科大","class":"1班","add":"地址zxc"},
+        {"num":"学号","name":"学生姓名","sex":0,"school":"电子科大","class":"1班","add":"地址"}
+    ]
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>Jquery练习</title>
+	<meta name="Author" content=""/>
+	<script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+	<script>
+        $(document).ready(function(){
+            console.log('jQuery已载入，已ready');
+            $('#img_t4').css({width:'500px'});
+        })
+        function test01(){
+            var Jdiv_1=$('#div_1');
+            Jdiv_1.css({width:'200px',height:'200px',border:'1px solid red'});
+        }
+        function test02(){
+            $('#sum').val(parseInt($('#num_1').val())+parseInt($('#num_2').val()));
+        }
+        function test03(){
+            $('#form_1 :radio').hide(500);
+        }
+        function test04(){
+            setInterval('bannerChange()',500)
+        }
+        var index=1;
+        function bannerChange(){
+             $('#img_t4').fadeOut('normal',function(){
+                $('#img_t4').attr('src','img/img_'+index+'.jpg')
+             });
+            console.log(index);
+            $('#img_t4').fadeIn('normal');
+            index++;
+            if($('#img_t4')==undefined){
+                index=0;
+            }
+        }
+        function test05(){
+            var newArr=['数组内容1','数组内容2','数组内容3','数组内容4','数组内容5','数组内容6'];
+            console.log('数组为：');
+            console.log(newArr);
+            $.each(newArr,function(index,value){
+                console.log('开始遍历,newArr数组中，第'+index+'项的值为 '+value);
+            })
+        }
+        function test06(){
+            $.getJSON('data/Json_t6.data',function(data){
+                console.log(data.data_1)
+            })
+        }
+    </script>
+</head>
+<body>
+    <div id="div_1">div_1</div>
+    <div id="div_2">div_2</div>
+    <div id="div_3">div_3</div>
+    <div id="div_4">div_4</div>
+    <button onclick="test01()">jQuery设置css</button>
+    <br/>
+    <input id="num_1" type="text">+<input id="num_2" type="text"> <button onclick="test02()">=</button> <input id="sum" type="text">
+    <form id="form_1" action="">
+        <label for="CB1"><input id="CB1" name="CB" type="radio">男</label>
+        <label for="CB2"><input id="CB2" name="CB" type="radio">女</label>
+        <label for="CB3"><input id="CB3" name="CB" type="radio">秀吉</label>
+    </form>
+    <button onclick="test03()">表单控件的相关操作</button>
+    <hr>
+    <div>
+        <img id="img_t4" src="img/img_1.jpg" alt="">
+    </div>
+    <button onclick="test04()">开始淡出轮播</button>
+    <hr/>
+    <button onclick="test05()">jQuery对数组的操作（遍历数组）</button>
+    <button onclick="test06()">jQuery对AJAX和Json对象的操作（快捷Get）</button>
+</body>
+</html>

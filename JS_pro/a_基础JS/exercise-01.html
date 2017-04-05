@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>12.13日作业</title>
+	<meta name="Author" content=""/>
+	<link rel="stylesheet" type="text/css" href="style.css">
+   <style>
+       h4{
+        text-align: center;
+       }
+       pre{
+        text-align: center;
+       }
+       button{
+        display: block;
+        margin: auto;
+       }
+    </style>
+    <script type="text/javascript" src="exercise-01.js"></script>
+</head>
+<body>
+   <h4>1.输入一个年份,如果是闰年，打印xx年是闰年，否则打印xx年不是闰年</h4>
+   <pre>
+    闰年的条件是：
+	1.能被4整除，但不能被100整除的年份都是闰年
+	2.能被400整除的年份是闰年
+	其它情况都不是闰年
+   </pre>
+    <button onclick="test01()">判断是否闰年</button>
+    <hr>
+    <h4>2.输入1个五位数，判断是否为回文数；</h4>
+    <pre>
+    （回文数，正读反读都是它自己，例：13731,94549，11211等都是)
+    </pre>
+    <button onclick="test02()">判断是否为回文数</button>
+    <hr>
+    <h4>3.输入一个整数,判断能否被4和5整除</h4>
+    <button onclick="test03()">判断是否可被4和5整除</button>
+    <hr>
+    <h4>4.随机输入5个数，求5个数的平均数.</h4>
+    <button onclick="test04()">求5个数的平均数</button>
+    <hr>
+    <h4>5.随机输入一个三位数,求这个三位数组成的最大数</h4>
+    <pre>
+    （如：输入714，打印741，输入549，打印954）
+    </pre>
+    <button onclick="test05()">输出3位数组合产生的最大数</button>
+</body>
+</html>

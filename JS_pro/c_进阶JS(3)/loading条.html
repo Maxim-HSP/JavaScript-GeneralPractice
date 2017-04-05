@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>Untitled Document</title>
+	<meta name="Author" content=""/>
+	<script>
+        var div_t1;
+        window.onload=function(){
+            div_t1=document.getElementById('div_t1');
+            div_t1.style.width='400px';
+            div_t1.style.height='';
+            for(var n=0;n<3;n++){
+               for(var i=0;i<5;i++){
+                   var Div=document.createElement('div');
+                   Div.style.display='inline-block';
+                   Div.style.float='left';
+                   Div.style.width=(400/15)+'px';
+                   Div.style.height=(200/9)+'px';
+                   div_t1.appendChild(Div);
+               } 
+            }
+        }
+        function test01(){
+            setInterval('ChangeColor()',100);
+        }
+        var index=1;
+        function ChangeColor(){
+            var divArr=document.getElementById('div_t1').getElementsByTagName('div');
+            if(index>1){
+                divArr[index].style.backgroundColor='#0F0F0F';
+                divArr[index-1].style.backgroundColor='#47484B';
+                divArr[index-2].style.backgroundColor='transparent';
+                index++;
+                if(index>divArr.length-1){
+                    index=0;
+                }
+            }
+            else if(index==1){
+                divArr[index].style.backgroundColor='#0F0F0F';
+                divArr[index-1].style.backgroundColor='#47484B';
+                divArr[divArr.length-1].style.backgroundColor='transparent';
+                index++;
+                
+            }
+            else if(index==0){
+                divArr[index].style.backgroundColor='#0F0F0F';
+                divArr[divArr.length-1].style.backgroundColor='#47484B';
+                divArr[divArr.length-2].style.backgroundColor='transparent';
+                index++;
+                
+            }
+        }
+        //第二题
+        function test02(){
+            setInterval('roundChange()',100);
+        }
+        var index_r=0;
+        function roundChange(){
+            if(index_r==8){
+                    index_r=0;
+                }
+            if(index_r>0){
+                var cDiv_1=document.getElementById('Rd'+(index_r));
+                var cDiv_2=document.getElementById('Rd'+(index_r-1));
+                cDiv_1.style.backgroundColor='#B22222';
+                cDiv_2.style.backgroundColor='transparent';
+            }
+            if(index_r==0){
+                document.getElementById('Rd0').style.backgroundColor='#B22222';
+                document.getElementById('Rd7').style.backgroundColor='transparent';
+            }
+            index_r++;
+        }
+    </script>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div id="div_t1">
+    </div>
+    <br/>
+    <br/>
+    <button onclick="test01()">开始横向滚动条</button>
+    <br/>
+    <br/>
+    <div id="div_t2">
+        <div class="RDiv" id="Rd0"></div>
+        <div class="RDiv" id="Rd1"></div>
+        <div class="RDiv" id="Rd2"></div>
+        <div class="RDiv" id="Rd7"></div>
+        <div class="RDiv" id="center"></div>
+        <div class="RDiv" id="Rd3"></div>
+        <div class="RDiv" id="Rd6"></div>
+        <div class="RDiv" id="Rd5"></div>
+        <div class="RDiv" id="Rd4"></div>
+    </div>
+    <style>
+        #div_t2{
+            width: 180px;
+            height: 180px;
+        }
+        .RDiv{
+            width: 60px;
+            height: 60px;
+            float: left;
+        }
+    </style>
+    <button onclick="test02()">开始轮回滚动</button>
+</body>
+</html>

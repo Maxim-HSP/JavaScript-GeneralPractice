@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>1219作业</title>
+	<meta name="Author" content=""/>
+	<script>
+        function test01(){
+            var num;
+            var Arr=[];
+            while(true){
+                num=window.prompt("请输入一个五位数",'');
+                var temp=parseInt(num);
+                if(isNaN(temp)){
+                alert('非法输入！请输入数字！');
+                }
+                else if(num.length!==5){
+                alert('非法输入！请输入五位数！');
+                }
+                else{break;}
+            }
+            console.log('输入的数字为：'+num+',准备传参到testFlowerFuc函数进行判断')
+            if(testFlowerFuc(num)){
+                for(var i=0;i<num.length;i++){
+                    Arr.push(parseInt(num.substring(i,i+1)));
+                }
+                console.log('返回成功，生成的数组为：');
+                console.log(Arr);
+            } else{
+                console.log('最终输出：false');
+            }
+            alert('事件已完成，请于console中查看过程');
+        }
+        //判断函数，先求和，再比对
+        function testFlowerFuc(GotNum){
+            var sum=0;
+            console.log('传参成功，开始判断');
+            for(var i=0;i<GotNum.length;i++){
+                n=parseInt(GotNum.substring(i,i+1));
+                console.log('第'+i+'位数字为：'+n);
+                sum+=n*n*n*n*n;
+            }
+            console.log('每位数字的5次方的和为：'+sum);
+            if(sum==parseInt(GotNum)){
+                console.log('该数为五角星数，返回true到原函数');
+                return true;
+            }else{
+                console.log('该数不是五角星数，返回false到原函数');
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h3>流程控制语句、循环、数组、字符串、传参、返回值混合使用</h3>
+    <pre>
+      
+    新建一个按钮，监听onclick，然后在onclick方法内输入一个5位数
+    先判断，如果不是5位数或者不是数字，提醒用户非法输入，让他重新输入
+    直到这个数为正确的5位数为止。
+
+    新建一个testFlowerFuc(),这个方法里面检测传进来的数字是否为五角星数
+    如果是五角星数（5位水仙花数）返回true，否则返回false
+    在调用testFlowerFuc()的地方接收返回值，如果为true，则把它放进数组内
+    分别放在数组的5个车厢里(需要拆分出来)比如12345放进数组内就是[1,2,3,4,5]
+    然后打印数组,最后打印出来是[1,2,3,4,5];
+    为false则直接console.log打印false
+    </pre>
+    <button onclick="test01()">开始事件函数</button>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>随机表格生成</title>
+	<meta name="Author" content=""/>
+	<link rel="stylesheet" type="text/css" href="bootstrap_3.0.2/css/bootstrap.min.css">
+	<script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="bootstrap_3.0.2/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="handlebars-v4.0.5.js"></script>
+<!--	表格handle模板-->
+	<script type="text/x-handlebars-template" id="handle_table_t1">
+        <table class="table_t1 table table-striped table-bordered">
+            <thead></thead>
+            <tbody>
+                {{#each this}}
+                <tr>
+                    <td>{{gender}}</td>
+                    <td>{{name}}</td>
+                    <td>{{age}}</td>
+                    <td>{{city}}</td>
+                    <td>{{hobby}}</td>
+                    {{#if marks}}
+                        <td>{{marks}}</td>
+                        {{else}}
+                        <td>未添加</td>
+                    {{/if}}
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </script>
+<!--    核心JS部分-->
+    <script type="text/javascript">
+        var titleArr=['性别','姓名','年龄','城市','爱好','备注'];
+        var people_sum=20;//生成随机数据的人数
+        var handle_table_t1;
+        var random_data;
+        $(document).ready(function(){
+            //注册模板
+            handle_table_t1=Handlebars.compile($('#handle_table_t1').html());
+        })
+        
+        //获取数据，并对数据进行随机处理
+        function random_Json(){
+            $.getJSON('data/random_table.json',function(GotJson){
+                random_data=new Array(people_sum);
+                $.each(random_data,function(RD_index){
+                    random_data[RD_index]={};
+                    random_data[RD_index].gender=GotJson.gender[Math.round(Math.random())];//取性别
+                    random_data[RD_index].name=GotJson.familyname[Math.floor(Math.random()*GotJson.familyname.length)];//取姓
+                    if(random_data[RD_index].gender=='男'){//如果为男性
+                        random_data[RD_index].name+=GotJson.givenname_male[Math.floor(Math.random()*GotJson.givenname_male.length)];//取男名
+                    }else{
+                        random_data[RD_index].name+=GotJson.givenname_female[Math.floor(Math.random()*GotJson.givenname_female.length)];//取女名
+                    }
+                    random_data[RD_index].age=Math.floor(Math.random()*13+18);
+                    random_data[RD_index].city=GotJson.city[Math.floor(Math.random()*GotJson.city.length)];//取城市
+                    random_data[RD_index].hobby=GotJson.hobby[Math.floor(Math.random()*GotJson.hobby.length)];//取爱好
+                });
+                console.log(random_data);
+                creat_table();
+            })
+        }
+        
+        //生成表格
+        function creat_table(){
+            console.log(random_data);
+            //调用模板使用随机数据生成表格
+            var table_t1=handle_table_t1(random_data);
+                $('.container').append(table_t1);
+                //(补)创建表头
+                $('.table_t1 thead').append('<tr>');
+                $.each(titleArr,function(title_index,title_value){
+                    $('.table_t1 thead tr').append('<th>');
+                    $('.table_t1 thead tr th').eq(title_index).html(title_value);
+                })
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <button class="btn btn-default" onclick="random_Json()">生成表格</button>
+    </div>
+</body>
+</html>

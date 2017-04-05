@@ -1,0 +1,9 @@
+{
+    "MyGame":[
+        {"name":"battlefield1","type":"FPS","year":"2016","level":"3A"},
+        {"name":"DarkSoulsIII","type":"ACT","year":"2016","level":"3A"},
+        {"name":"GTAV","type":"ACT","year":"2016","level":"3A"},
+        {"name":"DJMax Trilogy","type":"MUG","year":"2010"},
+        {"name":"FFXiii2","type":"RPG","year":"2015","level":"3A"}
+    ]
+}

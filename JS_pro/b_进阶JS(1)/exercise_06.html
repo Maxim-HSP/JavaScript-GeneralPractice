@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>12.27作业</title>
+	<meta name="Author" content=""/>
+	<script type="text/javascript" src="exercise_06.js"></script>
+</head>
+<body>
+    <h4>分页组件控制AJAX获取JSON生成的表格</h4>
+    <p>(只能于服务器环境中运行)</p>
+    <pre>
+    新建一个student.json
+    里面放入学生信息>=20条
+    读取出来，动态创建表格显示在页面上，并创建分页组件，
+    要求分页显示，每页显示5行，点击下一页，表格数据切换到下一页的数据 
+    点击上一页切换到第一页，首页切换到第一，尾页切换到最后
+    </pre>
+    <input onclick="GetJson()" type="button" value="获取students.Json并生成表格">
+    <div id="div_t1"></div>
+    <div id="btn_div" style="display:none">
+        <button onclick="PageChange('first')">首页</button>
+        <button onclick="PageChange('previous')">上一页</button>
+        <button onclick="PageChange('next')">下一页</button>
+        <button onclick="PageChange('last')">末页</button>
+    </div>
+</body>
+</html>

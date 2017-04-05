@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>12.23作业</title>
+	<meta name="Author" content=""/>
+<!--   coded by Maxim3244-->
+    <script type="text/javascript" src="exercise_04.js"></script>
+    <style>
+        .T1{
+            width: 400px;
+            text-align: center;
+            border: 1px solid #47484B;
+            padding: 10px;
+            position: relative;
+        }
+        .btn{
+            height: 20px;
+            background: #00BFFF;
+            padding: 0 5px;
+            color: white;
+        }
+        #page_text{
+            width: 40px;
+            display: inline-block
+        }
+        #btn_toL{
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="T1">
+        <input class="btn" id="btn_lt" type="button" value="< |">
+        <input class="btn" id="btn_l" type="button" value="<">
+        <input id="page_text" type="text" value="1">
+        <span id="page_all"></span>
+        <input class="btn" id="btn_r" type="button" value=">">
+        <input class="btn" id="btn_rb" type="button" value="| >"> 
+        <hr>
+        <p>·正常状态，4个按钮 </p>
+        <p>·首页，向前一页，向后一页，尾页,每次翻页，文本框内的值改变</p>
+        <p>·任意情况下跳到第一页首页按钮隐藏（尾页按钮同理）</p>
+        <p>·文本框可以输入字符（只可输入“-”和数字，其他字符输入后自动删除），输入框失焦后生效，如果输入小于1的数，则跳到第一页，大于最大页数的数，则跳到最大页数，输入正常范围的页码会赋值给index以匹配按钮。</p>
+        <p>·页码数组可于PageArr数组继续添加（push）,会自动匹配，且支持非数字</p>
+    </div>
+    <hr>
+    <div class="T1 T2">
+        <select name="sel_t1" id="sel_t1" multiple size="4">
+            <option value="cn">语文</option>
+            <option value="math">数学</option>
+            <option value="en">英语</option>
+            <option value="history">历史</option>
+            <option value="politics">政治</option>
+            <option value="pe">体育</option>
+        </select>
+        <input onclick="to_left()" id="btn_toL" type="button" value="<<">
+        <input onclick="to_right()" id="btn_toR" type="button" value=">>">
+        <select name="sel_t2" id="sel_t2" multiple size="4">
+            
+        </select>
+    </div>
+</body>
+</html>

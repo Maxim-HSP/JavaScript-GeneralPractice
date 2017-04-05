@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>12.15日作业</title>
+	<meta name="Author" content=""/>
+   <style>
+       h4{
+        text-align: center;
+       }
+       pre{
+        text-align: center;
+       }
+       button{
+        display: block;
+        margin: auto;
+       }
+    </style>
+    <script type="text/javascript" src="exercise-03.js"></script>
+</head>
+<body>
+    <h4>1.创建一个数组,arr</h4>
+    <pre>
+    弹出promot()框让用户输入数字，每输入1个，放入arr内。直到用户输入0为止
+    (这一步只存放数字，不要去过滤偶数)
+
+    输入0结束以后，要求删除arr内所有的奇数
+    (循环数组，删除所有奇数，注意，splice在这里使用的时候要小心)
+
+    删除完毕以后，打印当前数组，看看删干净没
+    最后计算出剩下数的总和
+    </pre>
+    <button onclick="test01()">创建数组，并输入数值进行运算</button>
+    <hr>
+    <h4>2.做一个简单的游戏选单，提示框提示用户</h4>
+    <pre>
+    输入指令1、注册游戏 2、登陆游戏 3、修改密码 4、找回密码 5、退出游戏
+    每次输入对应指令以后，弹出一句话，如，注册游戏就alert("欢迎注册")，
+    alert完以后继续弹出输入指令的框让用户输入指令
+    直到用户输入5，提示（"谢谢登陆，欢迎下次再来"）结束
+    </pre>
+    <button onclick="test02()">输入指令，弹出提升框</button>
+    <hr>
+    <h4>3.新建一个数组，里面放入0-100</h4>
+    <pre>放入完毕以后，删除其中20-40，最后打印
+  （也就是删完以后，打印18,19,41,42,43...）</pre>
+    <button onclick="test03()">开始输出</button>
+    <hr>
+    <h4>4.新建一个99乘法表，把每一个算式都放入数组内。放完以后弹出提示框，请输入索引</h4>
+    <pre>输入索引以后，打印数组内对应索引的值
+    如输0，打印(1 * 1 = 1)  如输1   alert( 1 * 2 = 2) 
+    当然这里的值根据你自己放的顺序来决定
+    最后输入一个&lt;0的数，弹框结束</pre>
+    <button onclick="test04()">开始生成，输入索引查找算式</button>
+</body>
+</html>

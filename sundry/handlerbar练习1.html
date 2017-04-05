@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>HB+bootstrap表格</title>
+	<meta name="Author" content=""/>
+	<link rel="stylesheet" type="text/css" href="bootstrap_3.0.2/css/bootstrap.min.css">
+	<script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="bootstrap_3.0.2/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="handlebars-v4.0.5.js"></script>
+<!--	表格handle模板-->
+	<script type="text/x-handlebars-template" id="Tpl_table_title">
+       <table id="table_t1" class="table table-striped table-bordered">
+            <tr>
+                {{#each this}}
+	                <th>{{this}}</th>
+	            {{/each}}
+            </tr>
+            <tbody id='tbody_t1'>
+                
+            </tbody>
+        </table>
+        <div class="btn-group">
+           <button type="button" class="btn btn-default">1</button>
+           <button type="button" class="btn btn-default">2</button>
+           <button type="button" class="btn btn-default">3</button>
+           <button type="button" class="btn btn-default">4</button>
+       </div>
+    </script>
+	<script type="text/x-handlebars-template" id="Tpl_table_content">
+	        {{#each this}}
+	            <tr>
+	                <td>{{num}}</td>
+	                <td>{{name}}</td>
+	                <td>{{pid}}</td>
+	                <td>{{class}}</td>
+	                {{#with teacher}}
+	                <td>{{tc1}} {{tc2}}</td>
+	                {{/with}}
+	                <td>{{com_level}}</td>
+	                <td>{{add}}</td>
+	            </tr>
+	        {{/each}}
+	</script>
+	<script type="text/javascript">
+        var nowPage=1;//当前页码
+        var maxPage;//最大页码
+        var table_line=5;//定义显示几行
+        var GotData;
+        $(document).ready(function(){
+            $.getJSON("data/HB-work1.json",function(GotJson){
+                GotData=GotJson;
+                var Tpl_table_title=Handlebars.compile($("#Tpl_table_title").html());
+                var Tpl_table_content=Handlebars.compile($("#Tpl_table_content").html());
+                //生成表格主体和表头
+                $('.container').html(Tpl_table_title(GotData.title));
+                //生成表格内容
+                var contentArr=[];
+                $.each($(GotData.content),function(content_i,content_value){
+                    if(content_i<table_line){
+                        contentArr.push(content_value);
+                    }
+                })
+                $('#tbody_t1').html(Tpl_table_content(contentArr));
+                $('.btn').click(changePage);
+            })
+        })
+        
+        function changePage(){
+//            clear_table();
+            var content=GotData.content;
+            var m=0;
+            nowPage=$(this).html();//改变现在的页码
+            content=content.slice((nowPage-1)*table_line,nowPage*table_line);
+            
+            $.each(content,function(rows_index){
+                $.each(content[rows_index],function(cells_index){
+                    console.log($('#tbody_t1 tr').eq(rows_index).children('td').eq(m).html());
+//                    $('#tbody_t1 tr').eq(rows_index).children('td').eq(cells_index).html(cells_value);
+                    m++
+                })
+                
+            });
+        }
+        function clear_table(){
+            var table=document.getElementById('table_t1');
+            for(var i=1;i<table_line+1;i++){
+                var tr = table.rows[i];
+                for(var n=0;n<GotData.title.length;n++){
+                    tr.cells[n].innerHTML = "　";
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        
+    </div>
+</body>
+</html>

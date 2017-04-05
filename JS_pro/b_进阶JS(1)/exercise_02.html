@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>12.21日作业</title>
+	<meta name="Author" content=""/>
+    <script>
+        var index1=0;
+        function test01(GotP){
+           GotP.innerHTML=(index1++)+1+GotP.innerHTML;
+        }
+        function test02(){
+            var GotLbs=document.getElementsByTagName('label');
+            for(var i=0;i<GotLbs.length;i++){
+                GotLbs[i].innerHTML='这是第'+(i+1)+'个label';
+                if(GotLbs[i].style.color=='red'){
+                    GotLbs[i].style.color='black';
+                }else{
+                    GotLbs[i].style.color='red';
+                }
+            }
+        }
+        //第三题，树组件。
+        function test03(Btn){
+            fold(0,Btn);
+        }
+        function test04(Btn){
+            fold(1,Btn);
+        }
+        function test05(Btn){
+            fold(2,Btn);
+        }
+        //定义折叠/展开函数
+        function fold(i,GotBtn){
+            var GotStl=document.getElementsByTagName('ul')[i].style;
+            if(GotStl.display=='none'){
+                GotStl.display='block';
+                GotBtn.innerHTML=GotBtn.innerHTML.replace('+','-');
+
+            }else{
+                GotStl.display='none';
+                GotBtn.innerHTML=GotBtn.innerHTML.replace('-','+');
+            }
+            console.log(document.getElementsByTagName('ul')[i].style.display);
+        }
+    </script>
+</head>
+<body>
+    <h4>新建一个p标签，每次点击，在这个p标签的最前面加上一个index</h4>
+    <p onclick="test01(this)">我是字段</p>
+    <hr>
+    <h4>创建10个label，默认为红色，加一个按钮控制它们，点击以后变为黑色，再次点击变为红色，再点变黑（如此反复）</h4>
+    <button onclick="test02()">为label赋予内容并红/黑变色</button>
+    <div>
+    <label for=""></label>
+    <label for=""></label>
+    <label for=""></label>
+    <label for=""></label>
+    <label for=""></label>
+    <label for=""></label>
+    <label for=""></label>
+    <label for=""></label>
+    <label for=""></label>
+    <label for=""></label>
+    </div>
+    <hr>
+    <h4>制作树组件，每次点击大标题以后，下面子项缩起来，并且后面的+号-号需要更改</h4>
+    <div>
+       <button name='TreeBtn' onclick="test03(this)">语言-</button><br/>
+        <ul>
+            <li>数学</li>
+            <li>语文</li>
+            <li>英语</li>
+        </ul>
+        <button name='TreeBtn' onclick="test04(this)">地区-</button><br/>
+        <ul>
+            <li>北京</li>
+            <li>上海</li>
+            <li>广州</li>
+            <li>深圳</li>
+        </ul>
+        <button name='TreeBtn' onclick="test05(this)">种类-</button><br/>
+        <ul>
+            <li>A类</li>
+            <li>B类</li>
+            <li>C类</li>
+        </ul>
+    </div>
+</body>
+</html>

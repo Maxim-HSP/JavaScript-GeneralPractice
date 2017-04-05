@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas画布</title>
+	<meta name="Author" content=""/>
+	<script>
+        var CNV_t1
+        window.onload=function(){
+            CNV_t1=document.getElementById('CNV_t1');
+            CNV_t1.height='400';
+            CNV_t1.width='400';
+        }
+        function test01(){
+            var paper=CNV_t1.getContext('2d');
+            paper.beginPath();
+            paper.arc(200,200,180,0,Math.PI*2,false);
+            paper.stroke();
+            paper.moveTo(300,200);
+            
+            paper.beginPath();
+            paper.arc(200,200,160,0,Math.PI*2,false);
+            paper.fillStyle='#E5A228';
+            paper.fill();
+            //.fill或者.stroke意味着结束这条路径，并决定是填充还是描边
+            //beginPath()意味着开始另一条路径，如果要定义fillStyle或者strokeStyle的话，就必须把各个路径分开，而不是全部都作为一个路径
+            paper.beginPath();
+            paper.moveTo(200,200);
+            paper.lineTo(300,200);
+            paper.stroke();
+            paper.moveTo(200,200);
+            paper.lineTo(200,100);
+            paper.stroke();
+            //绘制文本
+            paper.fillStyle='#366CB8';
+            paper.font='40px 楷体';
+            paper.textBaseline='middle';
+            paper.fillText(12,180,70);
+            paper.fillText(3,320,200);
+            paper.fillText(6,200,320);
+            paper.fillText(9,60,200);
+        }
+    </script>
+</head>
+<body>
+    <canvas id="CNV_t1" style="border:1px solid #E5A228"></canvas>
+    <button onclick="test01()">开始画图</button>
+
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>Handlebars测试</title>
+	<meta name="Author" content=""/>
+	<script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="handlebars-v4.0.5.js"></script>
+	<script id="myHadlBar_table1" type="text/x-handlebars-template">
+        <table border="1">
+        <tr>
+            <th>游戏</th>
+            <th>类型</th>
+            <th>年份</th>
+            <th>评级</th>
+            <th>主要内容/角色</th>
+        </tr>
+        {{#each this.MyGame}}
+            <tr>
+                <td>{{name}}</td>
+                <td>{{type}}</td>
+                <td>{{year}}</td>
+                {{#if level}}
+                    <td>{{level}}</td>
+                    {{else}}
+                    <td>未评级</td>
+                {{/if}}
+                {{#if role}}
+                    {{#with role}}
+                        <td>{{role1}}、{{role2}}</td>
+                    {{/with}}
+                    {{else}}
+                        <td>未输入</td>
+                {{/if}}
+            </tr>
+        {{/each}}
+        </table>
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            //获取json
+            $.getJSON("data/gameData.json",function(gotData){
+                //注册模板
+                var myHadlBar_table1=Handlebars.compile($('#myHadlBar_table1').html());
+                //调用模板传入数据，生成最后内容后放入body
+                $('body').html(myHadlBar_table1(gotData));
+            })
+        })
+    </script>
+</head>
+<body>
+    
+
+
+</body>
+</html>
